@@ -19,6 +19,13 @@ var root = process.env.NODE_ENV === "production" ? __dirname + '/../' : __dirnam
 
 // TODO python: images, format meanings, assign id, nicer homepage
 
+// Add headers
+app.use(function (req, res, next) {
+    // Website you wish to allow to connect
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8000');
+    // Pass to next layer of middleware
+    next();
+});
 app.use(bodyParser.json());
 app.use('/data', express.static(path.join(__dirname, 'data')));
 
